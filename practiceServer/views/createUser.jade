@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1 Create a New Account
+  form(method="POST" action="/users/create")
+    input(type="text" name="username" placeholder="Your Username")
+    br
+    input(type="password" name="password" placeholder="Your password")
+    br
+    input(type="password" name="confirm" placeholder="Confirm password")
+    br
+    input(type="text" name="email" placeholder="Your email")
+    br
+    input(type="number" name="age" placeholder="Your age")
+    br
+    button(type="submit") Create User
