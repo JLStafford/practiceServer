@@ -29,4 +29,19 @@ router.post('/create', function(req, res, next) {
     res.redirect('/create');
   }
 });
+
+router.post('/login', function(req, res, next) {
+  knex.raw(`SELECT * FROM users WHERE username = '${req.body.username}'`)
+  .then(function(users) {
+    bcrypt.compare(req.body.password, user.rows[0].password, function(err, resp) {
+      if (resp) {
+        res.redirect('/user/:id')
+      } else {
+        res.render('failedLogin')
+      }
+    });
+  });
+});
+
+
 module.exports = router;
